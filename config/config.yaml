@@ -2,8 +2,8 @@ organism: 'Hsapiens'
 
 data:
   url:
-    TFs_mm10: 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM5391776&format=file&file=GSM5391776%5FHF1M%2DCryo%5Fatac%5Ffragments%2Etsv%2Egz'
-    TFs_hg38: 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM5391776&format=file&file=GSM5391776%5FHF1M%2DCryo%5Ffiltered%5Ffeature%5Fbc%5Fmatrix%2Eh5'
+    TFs_mm10: 'https://resources.aertslab.org/cistarget/tf_lists/allTFs_mm10.txt'
+    TFs_hg38: 'https://resources.aertslab.org/cistarget/tf_lists/allTFs_hg38.txt'
     genome_mm10: 'https://heibox.uni-heidelberg.de/f/de56839fd8b24d0aba4a/?dl=1'
     annot_mm10:
     genome_hg38:
