@@ -1,13 +1,13 @@
-organism: 'Hsapiens'
+organism: 'Hsapiens'ftp://ftp.ensembl.org/pub/release-102/gtf/mus_musculus/
 
 data:
   url:
     TFs_mm10: 'https://resources.aertslab.org/cistarget/tf_lists/allTFs_mm10.txt'
     TFs_hg38: 'https://resources.aertslab.org/cistarget/tf_lists/allTFs_hg38.txt'
-    genome_mm10: 'https://heibox.uni-heidelberg.de/f/de56839fd8b24d0aba4a/?dl=1'
-    annot_mm10:
-    genome_hg38:
-    annot_hg38:
+    genome_mm10: 'ftp://ftp.ensembl.org/pub/release-102/fasta/mus_musculus/'
+    annot_mm10: 'ftp://ftp.ensembl.org/pub/release-102/gtf/mus_musculus/'
+    genome_hg38: 'https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/'
+    annot_hg38: 'https://ftp.ensembl.org/pub/release-113/gtf/homo_sapiens/'
 
 software:
   url:
