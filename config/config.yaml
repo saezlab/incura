@@ -1,0 +1,14 @@
+organism: 'Hsapiens'
+
+data:
+  url:
+    TFs_mm10: 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM5391776&format=file&file=GSM5391776%5FHF1M%2DCryo%5Fatac%5Ffragments%2Etsv%2Egz'
+    TFs_hg38: 'https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM5391776&format=file&file=GSM5391776%5FHF1M%2DCryo%5Ffiltered%5Ffeature%5Fbc%5Fmatrix%2Eh5'
+    genome_mm10: 'https://heibox.uni-heidelberg.de/f/de56839fd8b24d0aba4a/?dl=1'
+    annot_mm10:
+    genome_hg38:
+    annot_hg38:
+
+software:
+  url:
+    meme: 'https://meme-suite.org/meme/meme-software/5.5.7/meme-5.5.7.tar.gz'
