@@ -1,0 +1,21 @@
+from snakemake.utils import min_version
+
+min_version('7.29.0')
+
+configfile: "config/config.yaml"
+
+SAMPLES = config['samples']
+
+rule all:
+    input: 
+        expand('data/{sample}/adata_prc_annot.rds', sample = SAMPLES)
+#------------------------------------------------------------------------------------
+
+module prc_seurat:
+    snakefile: "rules/prc_seurat.smk"
+    config: config
+
+use rule prc_data from prc_seurat
+
+
+# snakemake --profile config/slurm/ ...
