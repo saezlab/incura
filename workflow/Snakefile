@@ -2,20 +2,21 @@ from snakemake.utils import min_version
 
 min_version('7.29.0')
 
-configfile: "config/config.yaml"
+configfile: 'config/config.yaml'
+#container: 'workflow/envs/incura.sif'
 
-SAMPLES = config['samples']
+ORGANISM = config['organism']
 
 rule all:
     input: 
-        expand('data/{sample}/adata_prc_annot.rds', sample = SAMPLES)
+        'data/promoters.csv'
 #------------------------------------------------------------------------------------
 
-module prc_seurat:
-    snakefile: "rules/prc_seurat.smk"
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
     config: config
 
-use rule prc_data from prc_seurat
+use rule extractPromoters from getPromoters
 
 
 # snakemake --profile config/slurm/ ...

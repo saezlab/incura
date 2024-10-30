@@ -45,7 +45,7 @@ rule downloadTFs:
     input:
         get_TFs
     output:
-        tfs='data/all_TFs.txt'
+        tfs=temp('data/all_TFs.txt')
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
@@ -54,7 +54,21 @@ rule downloadTFs:
         """
 
 rule downloadGenome:
-    input:
-        get_genome:
     output:
+        genome='data/genome.fa',
+        annot='data/annot.gtf'
+    params:
+        genome=config['data']['url'][ORGANISM]['genome'],
+        annot=config['data']['url'][ORGANISM]['annot']
+    singularity:
+        'workflow/envs/InCURA.sif'
+    shell:
+        """
+        wget '{params.genome}' -O '{output.genome}'
+        wget '{params.annot}' -O '{output.annot}'
+        gunzip '{output.genome}'
+        gunzip '{output.annot}'
+        """
+
+    
     
