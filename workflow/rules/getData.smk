@@ -2,17 +2,29 @@
 ORGANISM = config['organism']
 print(ORGANISM)
 
-# Define input function
+# Define input functions
 #----------------------------------------------------------
-
 # Input function for species specific reference genome files
+
 def get_TFs(wildcards):
     if ORGANISM == 'Hsapiens':
         TFs = config['data']['url']['TFs_hg38']
     elif ORGANISM == 'Mmusculus':
         TFs = config['data']['url']['TFs_mm10']
     return [TFs]
-#--------------------------
+#-----------------------------------------------------------
+# Input function to download genome 
+
+def get_genome(wildcards):
+    if ORGANISM == 'Hsapiens':
+        genome = config['data']['url']['genome_hg38']
+        annot = config['data']['url']['annot_hg38']
+    elif ORGANISM == 'Mmusculus':
+        genome = config['data']['url']['genome_mm10']
+        annot = config['data']['url']['annot_mm10']
+    return [genome, annot]
+
+#-----------------------------------------------------------
 
 rule installMEME:
     output:
