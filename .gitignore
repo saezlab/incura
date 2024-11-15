@@ -11,3 +11,5 @@ software/
 #snakemake 
 .snakemake/
 
+#singularity
+*.sif

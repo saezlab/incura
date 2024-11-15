@@ -27,7 +27,9 @@ From: ubuntu:20.04
                    libxml2-dev \
                    libcairo2-dev \
                    libxt-dev \
+                   libxslt-dev \
                    libopenblas-dev \
+                   libexpat1-dev \
                    bedtools \
                    tabix
 
@@ -49,6 +51,16 @@ From: ubuntu:20.04
 
     conda activate env
     pip install promoterExtract ipykernel
+
+    cpan install File::Which
+    cpan install HTML::PullParser
+    cpan install HTML::Template
+    cpan install HTML::TreeBuilder
+    cpan install JSON
+    cpan install XML::Simple
+    cpan install XML::Parser::Expat
+    cpan Sys::Info
+
 
     wget https://meme-suite.org/meme/meme-software/5.5.7/meme-5.5.7.tar.gz
     tar zxf meme-5.5.7.tar.gz

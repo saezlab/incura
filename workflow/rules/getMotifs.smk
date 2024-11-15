@@ -1,6 +1,6 @@
 rule getExpressedTFs:
     input:
-        all_TFs='data/all_TFs.txt'
+        all_TFs='data/all_TFs.txt',
         expr_genes='data/genes.txt'
     output: #flag as temp output once tested
         expr_TFs='data/expr_TFs.txt'
@@ -14,7 +14,7 @@ rule getExpressedTFs:
 
 rule extractMotifs:
     input:
-        TFs='data/expressedTFs.txt'
+        TFs='data/expr_TFs.txt'
     output:
         memeMotifs='data/motifs.meme'
     singularity:

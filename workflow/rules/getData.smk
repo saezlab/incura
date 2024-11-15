@@ -2,41 +2,20 @@
 ORGANISM = config['organism']
 print(ORGANISM)
 
-# Define input functions
-#----------------------------------------------------------
-# Input function for species specific reference genome files
-
-def get_TFs(wildcards):
-    if ORGANISM == 'Hsapiens':
-        TFs = config['data']['url']['TFs_hg38']
-    elif ORGANISM == 'Mmusculus':
-        TFs = config['data']['url']['TFs_mm10']
-    return [TFs]
-#-----------------------------------------------------------
-# Input function to download genome 
-
-def get_genome(wildcards):
-    if ORGANISM == 'Hsapiens':
-        genome = config['data']['url']['genome_hg38']
-        annot = config['data']['url']['annot_hg38']
-    elif ORGANISM == 'Mmusculus':
-        genome = config['data']['url']['genome_mm10']
-        annot = config['data']['url']['annot_mm10']
-    return [genome, annot]
 
 #-----------------------------------------------------------
 
 
 rule downloadTFs:
-    input:
-        get_TFs
     output:
-        tfs=temp('data/all_TFs.txt')
+        tfs='data/all_TFs.txt'
+    params:
+        TFs=config['data']['url'][ORGANISM]['TFs']
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
         """
-        wget '{input[0]}' -O '{output.tfs}'
+        wget '{params.TFs}' -O '{output.tfs}'
         """
 
 rule downloadGenome:
@@ -45,15 +24,18 @@ rule downloadGenome:
         annot='data/annot.gtf'
     params:
         genome=config['data']['url'][ORGANISM]['genome'],
-        annot=config['data']['url'][ORGANISM]['annot']
+        annot=config['data']['url'][ORGANISM]['annot'],
+        gzip_genome='data/genome.fa.gz',
+        gzip_annot='data/annot.gtf.gz'
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
         """
-        wget '{params.genome}' -O '{output.genome}'
-        wget '{params.annot}' -O '{output.annot}'
-        gunzip '{output.genome}'
-        gunzip '{output.annot}'
+        wget '{params.genome}' -O '{params.gzip_genome}'
+        wget '{params.annot}' -O '{params.gzip_annot}'
+
+        gunzip '{params.gzip_genome}'
+        gunzip '{params.gzip_annot}'
         """
 
     

@@ -9,14 +9,15 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/promoters.csv'
+        'data/motifs.meme'
+
 #------------------------------------------------------------------------------------
 
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
+module getMotifs:
+    snakefile: "rules/getMotifs.smk"
     config: config
 
-use rule extractPromoters from getPromoters
+use rule * from getMotifs
 
 
 # snakemake --profile config/slurm/ ...
