@@ -16,8 +16,11 @@ tfs <- read.table(path_tfs)
 indices <- c()
 
 for (tf in tfs){
-    pattern <- paste("^", tf, "$", sep="")
-    indices <- append(indices, grep(pattern, values(MotifDb)$geneSymbol, ignore.case=TRUE))
+   pattern <- paste("^", tf, "$", sep="") 
+}
+
+for (p in pattern){
+   indices <- append(indices, grep(p, values(MotifDb)$geneSymbol, ignore.case=TRUE))
 }
 
 all.motifs <- MotifDb[indices]

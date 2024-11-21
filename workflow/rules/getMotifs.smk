@@ -4,8 +4,6 @@ rule getExpressedTFs:
         expr_genes='data/genes.txt'
     output: #flag as temp output once tested
         expr_TFs='data/expr_TFs.txt'
-    singularity:
-        'workflow/envs/InCURA.sif'
     shell:
         """
         grep -w -f {input.expr_genes} {input.all_TFs} > {output.expr_TFs}
