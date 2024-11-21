@@ -5,13 +5,15 @@ rule extractPromoters:
     output:
         db='data/gff.db',
         promoters='data/promoters.tsv'
+    params:
+        csv='data/promoters.csv'
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
         """
         echo "Extracting promoters..."
         get_promoter create -g {input.annot} && mv gff.db data/
-        get_promoter extract -l 2000 -u 500 -f {input.genome} -g {output.db} -o {output.promoters}
-        sed -E 's/("([^"]*)")?,/\2\t/g' promoters.csv > promoters.tsv
+        get_promoter extract -l 2000 -u 500 -f {input.genome} -g {output.db} -o {params.csv}
+        sed -E 's/("([^"]*)")?,/\2\t/g' promoters.csv > {output.promoters}
         rm data/promoters.csv
         """
