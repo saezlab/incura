@@ -9,7 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/expr_TFs.txt'
+        'data/motifs.meme'
 
 #------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ module getMotifs:
     snakefile: "rules/getMotifs.smk"
     config: config
 
-use rule getExpressedTFs from getMotifs
+use rule * from getMotifs
 
 
 # snakemake --profile config/slurm/ ...
