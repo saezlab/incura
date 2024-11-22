@@ -50,7 +50,7 @@ From: ubuntu:20.04
     multiprocess 
 
     conda activate env
-    pip install promoterExtract ipykernel
+    pip install promoterExtract ipykernel tqdm
 
     cpan install File::Which
     cpan install HTML::PullParser
