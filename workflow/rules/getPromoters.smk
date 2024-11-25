@@ -27,40 +27,63 @@ rule extractGenes:
         sort {output.ids} > {output.ids_sorted}
         """
 
-
-rule processPromoters:
+rule sortPromoters:
     input:
-        promoters="data/promoters.csv",
-        annot="data/annot.gtf",
-        DEGS="data/sharedDEGs_mm10.txt"
+        promoters="data/promoters.csv"
     output:
-        ids='data/ids2names.txt',
-        ids_sorted='data/ids2names.sorted.txt',
         prom_cleaned='data/promoters.cleaned.csv',
         prom_sorted='data/promoters.sorted.csv',
-        prom_tsv='data/promoters.sorted.tsv',
-        prom_annot='data/promoters.annot.tsv',
-        prom_filt='data/promoters.final.DE.tsv',
-        promoters='data/promoters.formatted.tsv'
     shell:
         """
-        echo "Retreiving gene names..."
-        cat annot.gtf | awk 'BEGIN{{FS="\t"}}{{split($9,a,";"); if($3~"gene") print a[1]"\t"a[3]}}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
-        sort {output.ids} > {output.ids_sorted}
-
         echo "Sorting promoters..."
         tail -n +2 {input.promoters} > {output.prom_cleaned}
         sort {output.prom_cleaned} > {output.prom_sorted}
+        """
 
+rule convertPromoters:
+    input:
+        prom_sorted='data/promoters.sorted.csv'
+    output:
+        prom_tsv='data/promoters.sorted.tsv'
+
+    shell:
+        """
         echo "Converting promoters..."
         sed -E 's/("([^"]*)")?,/\2\t/g' {output.prom_sorted} > {output.prom_tsv}
+        """
 
+rule annotPromoters:
+    input:
+        prom_tsv='data/promoters.sorted.tsv'
+    output:
+        prom_annot='data/promoters.annot.tsv'
+
+    shell:
+        """
         echo "Assigning gene names..."
         awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {output.ids_sorted} {output.prom_tsv} > {output.prom_annot}
+        """
 
+rule filterPromoters:
+    input:
+        DEGS='data/sharedDEGs_mm10.txt',
+        prom_annot='data/promoters.annot.tsv'
+    output:
+        prom_filt='data/promoters.filt.tsv'
+    shell:
+        """
         echo "Filtering promoters..."
         grep -Ff {input.DEGS} {output.prom_annot} > {output.prom_filt}
+        """
 
+
+rule formatPromoters:
+    input:
+        prom_filt='data/promoters.filt.tsv'
+    output:
+        promoters='data/promoters.formatted.tsv'
+    shell:
+        """
         echo "Formatting promoters..."
         awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {output.prom_filt} > {output.promoters}
         sed -e 's/^/chr/' -i {output.promoters}
@@ -70,9 +93,9 @@ rule processPromoters:
 
 rule createFasta:
     input:
-        tsv="data/promoters.formatted.tsv",
+        tsv='data/promoters.formatted.tsv'
     output:
-        fasta="data/promoters.fa"
+        fasta='data/promoters.fa'
     shell:
         """
         echo "Creating FASTA file..."

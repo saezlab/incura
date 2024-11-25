@@ -17,10 +17,34 @@ module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
 
-use rule extractGenes from getPromoters
+use rule sortPromoters from getPromoters
 
 
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
 
+use rule convertPromoters from getPromoters
+
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule annotPromoters from getPromoters
+
+
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule filterPromoters from getPromoters
+
+
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule formatPromoters from getPromoters
 
 
 # snakemake --profile config/slurm/ ...
