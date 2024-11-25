@@ -49,19 +49,20 @@ rule convertPromoters:
     shell:
         """
         echo "Converting promoters..."
-        sed -E 's/("([^"]*)")?,/\2\t/g' {output.prom_sorted} > {output.prom_tsv}
+        sed -E 's/("([^"]*)")?,/\2\t/g' {input.prom_sorted} > {output.prom_tsv}
         """
 
 rule annotPromoters:
     input:
-        prom_tsv='data/promoters.sorted.tsv'
+        prom_tsv='data/promoters.sorted.tsv',
+        ids_sorted='data/ids2names.sorted.txt'
     output:
         prom_annot='data/promoters.annot.tsv'
 
     shell:
         """
         echo "Assigning gene names..."
-        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {output.ids_sorted} {output.prom_tsv} > {output.prom_annot}
+        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {input.ids_sorted} {input.prom_tsv} > {output.prom_annot}
         """
 
 rule filterPromoters:
@@ -73,7 +74,7 @@ rule filterPromoters:
     shell:
         """
         echo "Filtering promoters..."
-        grep -Ff {input.DEGS} {output.prom_annot} > {output.prom_filt}
+        grep -Ff {input.DEGS} {input.prom_annot} > {output.prom_filt}
         """
 
 
@@ -85,7 +86,7 @@ rule formatPromoters:
     shell:
         """
         echo "Formatting promoters..."
-        awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {output.prom_filt} > {output.promoters}
+        awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {input.prom_filt} > {output.promoters}
         sed -e 's/^/chr/' -i {output.promoters}
 
         echo "Done."
