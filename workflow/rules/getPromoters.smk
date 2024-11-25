@@ -14,6 +14,19 @@ rule extractPromoters:
         get_promoter extract -l 2000 -u 500 -f {input.genome} -g {output.db} -o {output.promoters}
         """
 
+rule extractGenes:
+    input:
+        annot="data/annot.gtf"
+    output:
+        ids='data/ids2names.txt',
+        ids_sorted='data/ids2names.sorted.txt'
+    shell:
+        """
+        echo "Retreiving gene names..."
+        cat {input.annot} | awk 'BEGIN{{FS="\t"}} {{split($9,a,","); if($3~"gene") print a[1]"\t"a[3]}}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
+        """
+
+
 rule processPromoters:
     input:
         promoters="data/promoters.csv",
