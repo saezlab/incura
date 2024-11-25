@@ -9,7 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/ids2names.sorted.txt'
+        'data/promoters.fa'
 
 #------------------------------------------------------------------------------------
 
