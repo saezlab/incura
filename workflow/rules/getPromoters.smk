@@ -31,7 +31,7 @@ rule processPromoters:
     shell:
         """
         echo "Retreiving gene names..."
-        cat annot.gtf | awk 'BEGIN{FS="\t"}{split($9,a,";"); if($3~"gene") print a[1]"\t"a[3]}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
+        cat annot.gtf | awk 'BEGIN{{FS="\t"}}{{split($9,a,";"); if($3~"gene") print a[1]"\t"a[3]}}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
         sort {output.ids} > {output.ids_sorted}
 
         echo "Sorting promoters..."
@@ -42,13 +42,13 @@ rule processPromoters:
         sed -E 's/("([^"]*)")?,/\2\t/g' {prom_sorted} > {prom_tsv}
 
         echo "Assigning gene names..."
-        awk 'NR==FNR {id[$1]=$2; next} {if ($1 in id) $1=id[$1]; print}' {ids_sorted} {prom_tsv} > {prom_annot}
+        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {ids_sorted} {prom_tsv} > {prom_annot}
 
         echo "Filtering promoters..."
         grep -Ff {input.DEGS} {prom_annot} > {prom_filt}
 
         echo "Formatting promoters..."
-        awk -F' ' 'BEGIN {OFS=" "} {print $2, $3, $4, $5, $1, $6}' {prom_filt} > {output.promoters}
+        awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {prom_filt} > {output.promoters}
         sed -e 's/^/chr/' -i {output.promoters}
 
         echo "Done."
@@ -62,5 +62,5 @@ rule createFasta:
     shell:
         """
         echo "Creating FASTA file..."
-        awk -F' ' 'NR>1 {print ">"$1":"$2"-"$3"("$4")_"$5"\n"$6}' {input.tsv} > {output.fasta}
+        awk -F' ' 'NR>1 {{print ">"$1":"$2"-"$3"("$4")_"$5"\n"$6}}' {input.tsv} > {output.fasta}
         """
