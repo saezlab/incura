@@ -9,7 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/promoters.fa'
+        'data/promoters.formatted.tsv'
 
 #------------------------------------------------------------------------------------
 
