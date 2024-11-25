@@ -23,7 +23,7 @@ rule extractGenes:
     shell:
         """
         echo "Retreiving gene names..."
-        cat {input.annot} | awk 'BEGIN{{FS="\t"}}{{split($9,a,";"); if($3~"gene") print a[1]"\t"a[3]}}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
+        cat {input.annot} | awk 'BEGIN{{FS="\t"}} {{split($9,a,";"); if($3~"gene") print a[1]"\t"a[3]}}' | sed 's/gene_id "//' | sed 's/gene_name "//' | sed 's/"//g' > {output.ids}
         """
 
 
