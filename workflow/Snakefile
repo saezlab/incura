@@ -9,7 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        "data/promoters.fa"
+        'data/ids2names.sorted.txt'
 
 #------------------------------------------------------------------------------------
 
@@ -17,14 +17,10 @@ module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
 
-use rule processPromoters from getPromoters
+use rule extractGenes from getPromoters
 
 
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
 
-use rule createFasta from getPromoters
 
 
 # snakemake --profile config/slurm/ ...
