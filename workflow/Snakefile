@@ -9,8 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        db='data/gff.db',
-        promoters='data/promoters.tsv'
+        "data/promoters.fa"
 
 #------------------------------------------------------------------------------------
 
@@ -18,7 +17,14 @@ module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
 
-use rule extractPromoters from getPromoters
+use rule processPromoters from getPromoters
+
+
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule createFasta from getPromoters
 
 
 # snakemake --profile config/slurm/ ...
