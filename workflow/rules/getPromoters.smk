@@ -56,9 +56,9 @@ rule processPromoters:
 
 rule createFasta:
     input:
-        tsv="promoters.formatted.tsv",
+        tsv="data/promoters.formatted.tsv",
     output:
-        fasta="promoters.fa"
+        fasta="data/promoters.fa"
     shell:
         """
         echo "Creating FASTA file..."
