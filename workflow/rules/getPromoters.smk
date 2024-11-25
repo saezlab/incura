@@ -35,20 +35,20 @@ rule processPromoters:
         sort {output.ids} > {output.ids_sorted}
 
         echo "Sorting promoters..."
-        tail -n +2 {input.promoters} > {prom_cleaned}
-        sort {prom_cleaned} > {prom_sorted}
+        tail -n +2 {input.promoters} > {output.prom_cleaned}
+        sort {output.prom_cleaned} > {output.prom_sorted}
 
         echo "Converting promoters..."
-        sed -E 's/("([^"]*)")?,/\2\t/g' {prom_sorted} > {prom_tsv}
+        sed -E 's/("([^"]*)")?,/\2\t/g' {output.prom_sorted} > {output.prom_tsv}
 
         echo "Assigning gene names..."
-        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {ids_sorted} {prom_tsv} > {prom_annot}
+        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {output.ids_sorted} {output.prom_tsv} > {output.prom_annot}
 
         echo "Filtering promoters..."
-        grep -Ff {input.DEGS} {prom_annot} > {prom_filt}
+        grep -Ff {input.DEGS} {output.prom_annot} > {output.prom_filt}
 
         echo "Formatting promoters..."
-        awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {prom_filt} > {output.promoters}
+        awk -F' ' 'BEGIN {{OFS=" "}} {{print $2, $3, $4, $5, $1, $6}}' {output.prom_filt} > {output.promoters}
         sed -e 's/^/chr/' -i {output.promoters}
 
         echo "Done."
