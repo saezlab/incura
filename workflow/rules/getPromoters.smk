@@ -102,5 +102,5 @@ rule createFasta:
     shell:
         """
         echo "Creating FASTA file..."
-        awk -F' ' 'NR>1 {{print ">"$1":"$2"-"$3"("$4")_"$5"\n"$6}}' {input.tsv} > {output.fasta}
+        awk -F' ' 'NR>1 {{print ">"$1":"$2"-"$3"("$4")_"$5"\\n"$6}}' {input.tsv} > {output.fasta}
         """
