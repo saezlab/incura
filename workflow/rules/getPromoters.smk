@@ -18,8 +18,8 @@ rule extractGenes:
     input:
         annot="data/annot.gtf"
     output:
-        ids='data/ids2names.txt',
-        ids_sorted='data/ids2names.sorted.txt'
+        ids='data/ids2names.tsv',
+        ids_sorted='data/ids2names.sorted.tsv'
     shell:
         """
         echo "Retreiving gene names..."
@@ -55,7 +55,7 @@ rule convertPromoters:
 rule annotPromoters:
     input:
         prom_tsv='data/promoters.sorted.tsv',
-        ids_sorted='data/ids2names.sorted.txt'
+        ids_sorted='data/ids2names.sorted.tsv'
     output:
         prom_annot='data/promoters.annot.tsv'
 
