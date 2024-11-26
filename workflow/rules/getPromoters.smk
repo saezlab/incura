@@ -62,6 +62,7 @@ rule annotPromoters:
     shell:
         """
         echo "Assigning gene names..."
+        sed 's/[^[:print:]\t]//g' {input.prom_tsv} > {input.prom_tsv}
         awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {input.ids_sorted} {input.prom_tsv} > {output.prom_annot}
         """
 
