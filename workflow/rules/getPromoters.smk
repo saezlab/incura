@@ -57,7 +57,7 @@ rule annotPromoters:
         prom_tsv='data/promoters.sorted.tsv',
         ids_sorted='data/ids2names.sorted.tsv'
     output:
-        prom_updated='data/promoters.sorted.updated.tsv'
+        prom_updated='data/promoters.sorted.updated.tsv',
         prom_annot='data/promoters.annot.tsv'
 
     shell:
