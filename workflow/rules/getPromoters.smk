@@ -57,13 +57,14 @@ rule annotPromoters:
         prom_tsv='data/promoters.sorted.tsv',
         ids_sorted='data/ids2names.sorted.tsv'
     output:
+        prom_updated='data/promoters.sorted.updated.tsv'
         prom_annot='data/promoters.annot.tsv'
 
     shell:
         """
         echo "Assigning gene names..."
-        sed 's/[^[:print:]\t]//g' {input.prom_tsv} > {input.prom_tsv}
-        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {input.ids_sorted} {input.prom_tsv} > {output.prom_annot}
+        sed 's/[^[:print:]\t]//g' {input.prom_tsv} > {output.prom_updated}
+        awk 'NR==FNR {{id[$1]=$2; next}} {{if ($1 in id) $1=id[$1]; print}}' {input.ids_sorted} {output.prom_updated} > {output.prom_annot}
         """
 
 rule filterPromoters:
