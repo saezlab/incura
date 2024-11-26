@@ -18,8 +18,8 @@ rule extractGenes:
     input:
         annot="data/annot.gtf"
     output:
-        ids='data/ids2names.tsv',
-        ids_sorted='data/ids2names.sorted.tsv'
+        ids=temp('data/ids2names.tsv'),
+        ids_sorted=temp('data/ids2names.sorted.tsv')
     shell:
         """
         echo "Retreiving gene names..."
@@ -31,8 +31,8 @@ rule sortPromoters:
     input:
         promoters="data/promoters.csv"
     output:
-        prom_cleaned='data/promoters.cleaned.csv',
-        prom_sorted='data/promoters.sorted.csv',
+        prom_cleaned=temp('data/promoters.cleaned.csv'),
+        prom_sorted=temp('data/promoters.sorted.csv')
     shell:
         """
         echo "Sorting promoters..."
@@ -44,7 +44,7 @@ rule convertPromoters:
     input:
         prom_sorted='data/promoters.sorted.csv'
     output:
-        prom_tsv='data/promoters.sorted.tsv'
+        prom_tsv=temp('data/promoters.sorted.tsv')
 
     shell:
         """
@@ -57,8 +57,8 @@ rule annotPromoters:
         prom_tsv='data/promoters.sorted.tsv',
         ids_sorted='data/ids2names.sorted.tsv'
     output:
-        prom_updated='data/promoters.sorted.updated.tsv',
-        prom_annot='data/promoters.annot.tsv'
+        prom_updated=temp('data/promoters.sorted.updated.tsv'),
+        prom_annot=temp('data/promoters.annot.tsv')
 
     shell:
         """
@@ -72,7 +72,7 @@ rule filterPromoters:
         DEGS='data/sharedDEGs_mm10.txt',
         prom_annot='data/promoters.annot.tsv'
     output:
-        prom_filt='data/promoters.filt.tsv'
+        prom_filt=temp('data/promoters.filt.tsv')
     shell:
         """
         echo "Filtering promoters..."
@@ -84,7 +84,7 @@ rule formatPromoters:
     input:
         prom_filt='data/promoters.filt.tsv'
     output:
-        promoters='data/promoters.formatted.tsv'
+        promoters=temp('data/promoters.formatted.tsv')
     shell:
         """
         echo "Formatting promoters..."

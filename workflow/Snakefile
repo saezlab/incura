@@ -54,4 +54,9 @@ module getPromoters:
 use rule formatPromoters from getPromoters
 
 
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule createFasta from getPromoters
 # snakemake --profile config/slurm/ ...
