@@ -12,6 +12,13 @@ rule all:
         'data/promoters.formatted.tsv'
 
 #------------------------------------------------------------------------------------
+module getPromoters:
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule extractGenes from getPromoters
+
+
 
 module getPromoters:
     snakefile: "rules/getPromoters.smk"
