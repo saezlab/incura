@@ -9,54 +9,14 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/promoters.fa'
+        'data/background.txt'
 
 #------------------------------------------------------------------------------------
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
+module runFIMO:
+    snakefile: "rules/runFIMO.smk"
     config: config
 
-use rule extractGenes from getPromoters
+use rule generateBackground from getPromoters
 
 
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule sortPromoters from getPromoters
-
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule convertPromoters from getPromoters
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule annotPromoters from getPromoters
-
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule filterPromoters from getPromoters
-
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule formatPromoters from getPromoters
-
-
-module getPromoters:
-    snakefile: "rules/getPromoters.smk"
-    config: config
-
-use rule createFasta from getPromoters
 # snakemake --profile config/slurm/ ...
