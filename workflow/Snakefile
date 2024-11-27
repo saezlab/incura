@@ -9,14 +9,14 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/background.txt'
+        'data/fimo/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module runFIMO:
     snakefile: "rules/runFIMO.smk"
     config: config
 
-use rule generateBackground from runFIMO
+use rule runFIMO from runFIMO
 
 
 # snakemake --profile config/slurm/ ...

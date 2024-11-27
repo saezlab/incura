@@ -17,11 +17,11 @@ rule runFIMO:
         motifs='data/motifs.meme',
         promoters='data/promoters.fa'
     output:
-        'data/fimo.tsv'
+        'data/fimo/fimo.tsv'
     singularity:
         'workflow/envs/InCURA.sif'
     threads: 30
     shell:
         """
-        fimo --oc data/fimo --verbosity 1 --thresh 1e-5 --bgfile {input.background} {input.motifs} {input.promoters}
+        fimo --o data/fimo --verbosity 1 --thresh 1e-5 --bgfile {input.background} {input.motifs} {input.promoters}
         """
