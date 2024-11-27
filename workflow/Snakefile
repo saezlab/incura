@@ -16,7 +16,7 @@ module runFIMO:
     snakefile: "rules/runFIMO.smk"
     config: config
 
-use rule generateBackground from getPromoters
+use rule generateBackground from runFIMO
 
 
 # snakemake --profile config/slurm/ ...
