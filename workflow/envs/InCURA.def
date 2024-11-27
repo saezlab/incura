@@ -4,6 +4,9 @@ From: ubuntu:20.04
 
 %environment
     export PATH=/opt/:$PATH
+    export PATH=/opt/meme/bin:/opt/meme/libexec/meme-5.5.7:$PATH
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib
+
     . "/opt/conda/etc/profile.d/conda.sh"
     . "/opt/conda/etc/profile.d/mamba.sh"
     conda activate env
@@ -64,10 +67,14 @@ From: ubuntu:20.04
 
     wget https://meme-suite.org/meme/meme-software/5.5.7/meme-5.5.7.tar.gz
     tar zxf meme-5.5.7.tar.gz
-    (cd meme-5.5.7 && ./configure --prefix=$HOME/meme --enable-build-libxml2 --enable-build-libxslt && make && make test && make install)
+    export TMPDIR=/tmp
+    (cd meme-5.5.7 && ./configure --build=x86_64-pc-linux-gnu --prefix=/opt/meme --enable-build-libxml2 --enable-build-libxslt && make && make test && make install)
+    
 
+
+    export PATH=/opt/meme/bin:/opt/meme/libexec/meme-5.5.7:$PATH
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib
-    export PATH=$HOME/meme/bin:$HOME/meme/libexec/meme-5.5.7:$PATH
+
 
     # Remove cache for lighter containers
     pip cache purge
