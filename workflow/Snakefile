@@ -9,7 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_cluster_1/fimo.tsv'
+        'data/fimo_cluster_2/fimo.tsv', 'data/fimo_cluster_3/fimo.tsv', 'data/fimo_cluster_4/fimo.tsv', 'data/fimo_cluster_5/fimo.tsv', 'data/fimo_cluster_6/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getPromoters:
