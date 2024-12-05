@@ -17,7 +17,7 @@ rule runFIMO:
         motifs='data/motifs.meme',
         promoters='data/promoters_{sample}.fa'
     output:
-        'data/fimo_{sample}/fimo_{sample}.tsv'
+        'data/fimo_{sample}/fimo.tsv'
     singularity:
         'workflow/envs/InCURA.sif'
     threads: 30
