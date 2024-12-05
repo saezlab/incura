@@ -12,18 +12,6 @@ rule all:
         'data/fimo_cluster_0/fimo.tsv'
 
 #------------------------------------------------------------------------------------
-module getData:
-    snakefile: "rules/getData.smk"
-    config: config
-
-use rule * from getData
-
-module getMotifs:
-    snakefile: "rules/getMotifs.smk"
-    config: config
-    
-use rule * from getMotifs
-
 module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
