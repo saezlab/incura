@@ -77,7 +77,7 @@ rule filterPromoters:
     shell:
         """
         echo "Filtering promoters..."
-        grep -Ff {input.DEGS} {input.prom_annot} > {output.prom_filt}
+        awk 'NR==FNR {genes[$1]; next} $1 in genes' {input.DEGS} {input.prom_annot} > {output.prom_filt}
         """
 
 
