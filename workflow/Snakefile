@@ -22,7 +22,7 @@ module getMotifs:
     snakefile: "rules/getMotifs.smk"
     config: config
 
-use rule extractMotifs from getMotifs
+use rule * from getMotifs
 
 module getPromoters:
     snakefile: "rules/getPromoters.smk"
