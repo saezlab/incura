@@ -18,14 +18,13 @@ module getData:
 
 use rule * from getData
 
-
 module getMotifs:
     snakefile: "rules/getMotifs.smk"
     config: config
 
 use rule extractMotifs from getMotifs
 
-module getPromoters
+module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
 
