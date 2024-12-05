@@ -1,8 +1,8 @@
 rule generateBackground:
     input: 
-        'data/promoters.fa'
+        'data/promoters_{sample}.fa'
     output:
-        'data/background.txt'
+        'data/background_{sample}.txt'
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
@@ -13,11 +13,11 @@ rule generateBackground:
 
 rule runFIMO:
     input:
-        background='data/background.txt',
+        background='data/background_{sample}.txt',
         motifs='data/motifs.meme',
-        promoters='data/promoters.fa'
+        promoters='data/promoters_{sample}.fa'
     output:
-        'data/fimo/fimo.tsv'
+        'data/fimo_{sample}/fimo_{sample}.tsv'
     singularity:
         'workflow/envs/InCURA.sif'
     threads: 30

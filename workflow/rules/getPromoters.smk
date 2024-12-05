@@ -69,10 +69,10 @@ rule annotPromoters:
 
 rule filterPromoters:
     input:
-        DEGS='data/DEGs.txt',
+        DEGS='data/DEGs_{sample}.txt',
         prom_annot='data/promoters.annot.tsv'
     output:
-        prom_filt=temp('data/promoters.filt.tsv')
+        prom_filt=temp('data/promoters_{sample}.filt.tsv')
     shell:
         """
         echo "Filtering promoters..."
@@ -82,9 +82,9 @@ rule filterPromoters:
 
 rule formatPromoters:
     input:
-        prom_filt='data/promoters.filt.tsv'
+        prom_filt='data/promoters_{sample}.filt.tsv'
     output:
-        promoters=temp('data/promoters.formatted.tsv')
+        promoters=temp('data/promoters_{sample}.formatted.tsv')
     shell:
         """
         echo "Formatting promoters..."
@@ -96,9 +96,9 @@ rule formatPromoters:
 
 rule createFasta:
     input:
-        tsv='data/promoters.formatted.tsv'
+        tsv='data/promoters_{sample}.formatted.tsv'
     output:
-        fasta='data/promoters.fa'
+        fasta='data/promoters_{sample}.fa'
     shell:
         """
         echo "Creating FASTA file..."
