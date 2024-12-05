@@ -7,6 +7,7 @@ rule extractPromoters:
         promoters='data/promoters.csv'
     singularity:
         'workflow/envs/InCURA.sif'
+    threads: 32
     shell:
         """
         echo "Extracting promoters..."
