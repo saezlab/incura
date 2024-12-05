@@ -21,7 +21,7 @@ use rule * from getData
 module getMotifs:
     snakefile: "rules/getMotifs.smk"
     config: config
-
+    
 use rule * from getMotifs
 
 module getPromoters:
