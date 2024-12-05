@@ -73,7 +73,7 @@ rule filterPromoters:
         DEGS='data/DEGs_{sample}.txt',
         prom_annot='data/promoters.annot.tsv'
     output:
-        prom_filt=temp('data/promoters_{sample}.filt.tsv')
+        prom_filt='data/promoters_{sample}.filt.tsv'
     shell:
         """
         echo "Filtering promoters..."
