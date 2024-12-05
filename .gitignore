@@ -5,6 +5,10 @@
 data/
 temp_data/
 
+#Jupyter notebook
+.ipynb_checkpoints/
+workflow/notebooks/
+
 #Software
 software/
 

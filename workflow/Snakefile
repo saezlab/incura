@@ -12,11 +12,30 @@ rule all:
         'data/fimo/fimo.tsv'
 
 #------------------------------------------------------------------------------------
+module getData:
+    snakefile: "rules/getData.smk"
+    config: config
+
+use rule * from getData
+
+
+module getMotifs:
+    snakefile: "rules/getMotifs.smk"
+    config: config
+
+use rule extractMotifs from getMotifs
+
+module getPromoters
+    snakefile: "rules/getPromoters.smk"
+    config: config
+
+use rule * from getPromoters
+
 module runFIMO:
     snakefile: "rules/runFIMO.smk"
     config: config
 
-use rule runFIMO from runFIMO
+use rule * from runFIMO
 
 
 # snakemake --profile config/slurm/ ...

@@ -69,7 +69,7 @@ rule annotPromoters:
 
 rule filterPromoters:
     input:
-        DEGS='data/sharedDEGs_mm10.txt',
+        DEGS='data/DEGs.txt',
         prom_annot='data/promoters.annot.tsv'
     output:
         prom_filt=temp('data/promoters.filt.tsv')
