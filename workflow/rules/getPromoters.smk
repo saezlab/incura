@@ -20,7 +20,7 @@ rule extractGenes:
         annot="data/annot.gtf"
     output:
         ids=temp('data/ids2names.tsv'),
-        ids_sorted=temp('data/ids2names.sorted.tsv')
+        ids_sorted='data/ids2names.sorted.tsv'
     shell:
         """
         echo "Retreiving gene names..."
@@ -59,7 +59,7 @@ rule annotPromoters:
         ids_sorted='data/ids2names.sorted.tsv'
     output:
         prom_updated=temp('data/promoters.sorted.updated.tsv'),
-        prom_annot=temp('data/promoters.annot.tsv')
+        prom_annot='data/promoters.annot.tsv'
 
     shell:
         """
