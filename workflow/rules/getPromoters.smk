@@ -3,7 +3,7 @@ rule extractPromoters:
         genome='data/genome.fa',
         annot='data/annot.gtf'
     output:
-        db='data/gff.db',
+        db=temp('data/gff.db'),
         promoters='data/promoters.csv'
     singularity:
         'workflow/envs/InCURA.sif'
@@ -73,7 +73,7 @@ rule filterPromoters:
         DEGS='data/DEGs_{sample}.txt',
         prom_annot='data/promoters.annot.tsv'
     output:
-        prom_filt='data/promoters_{sample}.filt.tsv'
+        prom_filt=temp('data/promoters_{sample}.filt.tsv')
     shell:
         """
         echo "Filtering promoters..."
