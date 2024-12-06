@@ -9,11 +9,8 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_cluster_2/fimo.tsv', 'data/fimo_cluster_3/fimo.tsv', 'data/fimo_cluster_4/fimo.tsv', 'data/fimo_cluster_5/fimo.tsv', 'data/fimo_cluster_6/fimo.tsv',
-        'data/fimo_cluster_7/fimo.tsv', 'data/fimo_cluster_8/fimo.tsv', 'data/fimo_cluster_9/fimo.tsv', 'data/fimo_cluster_10/fimo.tsv', 'data/fimo_cluster_11/fimo.tsv',
-        'data/fimo_cluster_12/fimo.tsv', 'data/fimo_cluster_13/fimo.tsv', 'data/fimo_cluster_14/fimo.tsv', 'data/fimo_cluster_15/fimo.tsv', 'data/fimo_cluster_16/fimo.tsv',
-        'data/fimo_cluster_17/fimo.tsv', 'data/fimo_cluster_18/fimo.tsv', 'data/fimo_cluster_19/fimo.tsv', 'data/fimo_cluster_20/fimo.tsv', 'data/fimo_cluster_21/fimo.tsv',
-        'data/fimo_cluster_22/fimo.tsv', 'data/fimo_cluster_23/fimo.tsv', 'data/fimo_cluster_24/fimo.tsv', 'data/fimo_cluster_25/fimo.tsv'
+        'data/fimo_cluster_3/fimo.tsv', 'data/fimo_cluster_5/fimo.tsv', 'data/fimo_cluster_14/fimo.tsv', 'data/fimo_cluster_17/fimo.tsv',
+        'data/fimo_cluster_18/fimo.tsv', 'data/fimo_cluster_20/fimo.tsv', 'data/fimo_cluster_23/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getPromoters:
