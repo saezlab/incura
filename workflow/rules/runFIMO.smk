@@ -2,7 +2,7 @@ rule generateBackground:
     input: 
         'data/promoters_{sample}.fa'
     output:
-        'data/background_{sample}.txt'
+        temp('data/background_{sample}.txt')
     singularity:
         'workflow/envs/InCURA.sif'
     shell:
@@ -20,7 +20,7 @@ rule runFIMO:
         'data/fimo_{sample}/fimo.tsv'
     singularity:
         'workflow/envs/InCURA.sif'
-    threads: 30
+    threads: 32
     shell:
         """
         fimo --oc data/fimo_{wildcards.sample} --verbosity 2 --thresh 1e-5 --bgfile {input.background} {input.motifs} {input.promoters}
