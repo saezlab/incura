@@ -9,10 +9,21 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_cluster_3/fimo.tsv', 'data/fimo_cluster_5/fimo.tsv', 'data/fimo_cluster_14/fimo.tsv', 'data/fimo_cluster_17/fimo.tsv',
-        'data/fimo_cluster_18/fimo.tsv', 'data/fimo_cluster_20/fimo.tsv', 'data/fimo_cluster_23/fimo.tsv'
+        'data/fimo_Paul2014/fimo.tsv'
 
 #------------------------------------------------------------------------------------
+module getData:
+    snakefile: "rules/getData.smk"
+    config: config
+
+use rule * from getData
+
+module getMotifs:
+    snakefile: "rules/getMotifs.smk"
+    config: config
+
+use rule * from getMotifs
+
 module getPromoters:
     snakefile: "rules/getPromoters.smk"
     config: config
