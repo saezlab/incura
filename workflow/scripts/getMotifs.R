@@ -33,6 +33,11 @@ if (organism == "Hsapiens") {
    print("Error: Invalid organism. Only Hsapiens or Mmusculus")
 }
 
+#Replace motif names with gene symbols
+names(filt.motifs) <- mcols(filt.motifs)$geneSymbol
+
+
+
 export(filt.motifs, con=path_out, format="meme")
 
 
