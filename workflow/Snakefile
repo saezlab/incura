@@ -9,10 +9,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_cluster_0/fimo.tsv', 'data/fimo_cluster_1/fimo.tsv', 'data/fimo_cluster_2/fimo.tsv', 'data/fimo_cluster_3/fimo.tsv', 'data/fimo_cluster_4/fimo.tsv', 
-        'data/fimo_cluster_5/fimo.tsv', 'data/fimo_cluster_6/fimo.tsv', 'data/fimo_cluster_7/fimo.tsv', 'data/fimo_cluster_8/fimo.tsv', 'data/fimo_cluster_9/fimo.tsv', 
-        'data/fimo_cluster_10/fimo.tsv', 'data/fimo_cluster_11/fimo.tsv', 'data/fimo_cluster_12/fimo.tsv'
-
+        'data/fimo_msigdb/fimo.tsv'
 #------------------------------------------------------------------------------------
 module getData:
     snakefile: "rules/getData.smk"
