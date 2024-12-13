@@ -7,9 +7,15 @@ configfile: 'config/config.yaml'
 
 ORGANISM = config['organism']
 
+# Read the list of input files from a text file
+with open("output_files.txt") as f:
+    input_files = [line.strip() for line in f]
+
+
 rule all:
     input: 
-        'data/fimo_msigdb/fimo.tsv'
+        input_files
+
 #------------------------------------------------------------------------------------
 module getData:
     snakefile: "rules/getData.smk"
@@ -37,4 +43,3 @@ use rule * from runFIMO
 
 
 # snakemake --profile config/slurm/ ...
-'data/fimo_cluster_2/fimo.tsv',
