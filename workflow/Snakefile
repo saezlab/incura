@@ -14,7 +14,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_Angiogenesis/fimo.tsv', 'data/fimo_Coagulation/fimo.tsv', 'data/fimo_E2F_targets/fimo.tsv', 'data/fimo_MYC_targets/fimo.tsv', 'data/fimo_IL6_JAK_STAT3/fimo.tsv'
+        'data/fimo_PAX3/fimo.tsv', 'data/fimo_ATF5/fimo.tsv', 'data/fimo_ELF5/fimo.tsv', 'data/fimo_NR1D1/fimo.tsv', 'data/fimo_ZIM3/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getData:
