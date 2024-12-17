@@ -14,7 +14,8 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_PAX3_targets/fimo.tsv', 'data/fimo_ATF5_targets/fimo.tsv', 'data/fimo_ELF5_targets/fimo.tsv', 'data/fimo_NR1D1_targets/fimo.tsv', 'data/fimo_ZIM3_targets/fimo.tsv'
+        'data/fimo_cluster1/fimo.tsv', 'data/fimo_cluster2/fimo.tsv', 'data/fimo_cluster3/fimo.tsv', 'data/fimo_cluster4/fimo.tsv', 'data/fimo_cluster5/fimo.tsv', 
+        'data/fimo_cluster6/fimo.tsv', 'data/fimo_cluster7/fimo.tsv', 'data/fimo_cluster8/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getData:
