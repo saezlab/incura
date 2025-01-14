@@ -14,7 +14,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_mouseKidney/fimo.tsv'
+        'data/fimo_mouseLiver/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getData:
