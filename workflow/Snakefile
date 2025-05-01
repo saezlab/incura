@@ -14,7 +14,7 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_monocytes_hvg/fimo.tsv', 'data/fimo_neutrophils_hvg/fimo.tsv',
+        'data/fimo_monocytes_hvg/fimo.tsv'
 #------------------------------------------------------------------------------------
 module getData:
     snakefile: "rules/getData.smk"
