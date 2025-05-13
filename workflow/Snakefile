@@ -17,7 +17,7 @@ rule all:
         'data/fimo_xaa/fimo.tsv', 'data/fimo_xab/fimo.tsv', 'data/fimo_xac/fimo.tsv', 'data/fimo_xad/fimo.tsv', 'data/fimo_xae/fimo.tsv', 'data/fimo_xaf/fimo.tsv', 
         'data/fimo_xag/fimo.tsv', 'data/fimo_xah/fimo.tsv', 'data/fimo_xai/fimo.tsv', 'data/fimo_xaj/fimo.tsv', 'data/fimo_xak/fimo.tsv', 'data/fimo_xal/fimo.tsv',
         'data/fimo_xam/fimo.tsv', 'data/fimo_xan/fimo.tsv', 'data/fimo_xao/fimo.tsv', 'data/fimo_xap/fimo.tsv', 'data/fimo_xaq/fimo.tsv', 'data/fimo_xar/fimo.tsv',
-        'data/fimo_xas/fimo.tsv', 'data/fimo_xau/fimo.tsv', 'data/fimo_xav/fimo.tsv', 'data/fimo_xaw/fimo.tsv', 'data/fimo_xax/fimo.tsv', 
+        'data/fimo_xas/fimo.tsv', 'data/fimo_xat/fimo.tsv', 'data/fimo_xau/fimo.tsv', 'data/fimo_xav/fimo.tsv', 'data/fimo_xaw/fimo.tsv', 'data/fimo_xax/fimo.tsv', 
         'data/fimo_xay/fimo.tsv', 'data/fimo_xaz/fimo.tsv', 'data/fimo_xba/fimo.tsv', 'data/fimo_xbb/fimo.tsv', 'data/fimo_xbc/fimo.tsv', 'data/fimo_xbd/fimo.tsv',
         'data/fimo_xbe/fimo.tsv', 'data/fimo_xbf/fimo.tsv', 'data/fimo_xbg/fimo.tsv', 'data/fimo_xbh/fimo.tsv', 'data/fimo_xbi/fimo.tsv', 'data/fimo_xbj/fimo.tsv', 
         'data/fimo_xbk/fimo.tsv', 'data/fimo_xbl/fimo.tsv', 'data/fimo_xbm/fimo.tsv', 'data/fimo_xbn/fimo.tsv', 'data/fimo_xbo/fimo.tsv', 'data/fimo_xbp/fimo.tsv', 
