@@ -14,20 +14,8 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_xaa/fimo.tsv', 'data/fimo_xab/fimo.tsv', 'data/fimo_xac/fimo.tsv', 'data/fimo_xad/fimo.tsv', 'data/fimo_xae/fimo.tsv', 'data/fimo_xaf/fimo.tsv', 
-        'data/fimo_xag/fimo.tsv', 'data/fimo_xah/fimo.tsv', 'data/fimo_xai/fimo.tsv', 'data/fimo_xaj/fimo.tsv', 'data/fimo_xak/fimo.tsv', 'data/fimo_xal/fimo.tsv',
-        'data/fimo_xam/fimo.tsv', 'data/fimo_xan/fimo.tsv', 'data/fimo_xao/fimo.tsv', 'data/fimo_xap/fimo.tsv', 'data/fimo_xaq/fimo.tsv', 'data/fimo_xar/fimo.tsv',
-        'data/fimo_xas/fimo.tsv', 'data/fimo_xat/fimo.tsv', 'data/fimo_xau/fimo.tsv', 'data/fimo_xav/fimo.tsv', 'data/fimo_xaw/fimo.tsv', 'data/fimo_xax/fimo.tsv', 
-        'data/fimo_xay/fimo.tsv', 'data/fimo_xaz/fimo.tsv', 'data/fimo_xba/fimo.tsv', 'data/fimo_xbb/fimo.tsv', 'data/fimo_xbc/fimo.tsv', 'data/fimo_xbd/fimo.tsv',
-        'data/fimo_xbe/fimo.tsv', 'data/fimo_xbf/fimo.tsv', 'data/fimo_xbg/fimo.tsv', 'data/fimo_xbh/fimo.tsv', 'data/fimo_xbi/fimo.tsv', 'data/fimo_xbj/fimo.tsv', 
-        'data/fimo_xbk/fimo.tsv', 'data/fimo_xbl/fimo.tsv', 'data/fimo_xbm/fimo.tsv', 'data/fimo_xbn/fimo.tsv', 'data/fimo_xbo/fimo.tsv', 'data/fimo_xbp/fimo.tsv', 
-        'data/fimo_xbq/fimo.tsv', 'data/fimo_xbr/fimo.tsv', 'data/fimo_xbs/fimo.tsv', 'data/fimo_xbt/fimo.tsv', 'data/fimo_xbu/fimo.tsv', 'data/fimo_xbv/fimo.tsv',
-        'data/fimo_xbw/fimo.tsv', 'data/fimo_xbx/fimo.tsv', 'data/fimo_xby/fimo.tsv', 'data/fimo_xbz/fimo.tsv', 'data/fimo_xca/fimo.tsv', 'data/fimo_xcb/fimo.tsv',
-        'data/fimo_xcc/fimo.tsv', 'data/fimo_xcd/fimo.tsv', 'data/fimo_xce/fimo.tsv', 'data/fimo_xcf/fimo.tsv', 'data/fimo_xcg/fimo.tsv', 'data/fimo_xch/fimo.tsv',
-        'data/fimo_xci/fimo.tsv', 'data/fimo_xcj/fimo.tsv', 'data/fimo_xck/fimo.tsv', 'data/fimo_xcl/fimo.tsv', 'data/fimo_xcm/fimo.tsv', 'data/fimo_xcn/fimo.tsv',
-        'data/fimo_xco/fimo.tsv', 'data/fimo_xcp/fimo.tsv', 'data/fimo_xcq/fimo.tsv', 'data/fimo_xcr/fimo.tsv', 'data/fimo_xcs/fimo.tsv', 'data/fimo_xct/fimo.tsv',
-        'data/fimo_xcu/fimo.tsv', 'data/fimo_xcv/fimo.tsv', 'data/fimo_xcw/fimo.tsv', 'data/fimo_xcx/fimo.tsv', 'data/fimo_xcy/fimo.tsv', 'data/fimo_xcz/fimo.tsv',
-        'data/fimo_xda/fimo.tsv', 'data/fimo_xdb/fimo.tsv', 'data/fimo_xdc/fimo.tsv', 'data/fimo_xdd/fimo.tsv', 'data/fimo_xde/fimo.tsv'
+        'data/fimo_xat/fimo.tsv', 'data/fimo_xdb/fimo.tsv', 'data/fimo_xdc/fimo.tsv', 'data/fimo_xdd/fimo.tsv'
+
 #------------------------------------------------------------------------------------
 module getData:
     snakefile: "rules/getData.smk"
