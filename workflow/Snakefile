@@ -14,7 +14,15 @@ ORGANISM = config['organism']
 
 rule all:
     input: 
-        'data/fimo_xat/fimo.tsv', 'data/fimo_xdb/fimo.tsv', 'data/fimo_xdc/fimo.tsv', 'data/fimo_xdd/fimo.tsv'
+        'data/fimo_00/fimo.tsv', 'data/fimo_01/fimo.tsv', 'data/fimo_02/fimo.tsv', 'data/fimo_03/fimo.tsv', 'data/fimo_04/fimo.tsv', 
+        'data/fimo_05/fimo.tsv', 'data/fimo_06/fimo.tsv', 'data/fimo_07/fimo.tsv', 'data/fimo_08/fimo.tsv', 'data/fimo_09/fimo.tsv',
+        'data/fimo_10/fimo.tsv', 'data/fimo_11/fimo.tsv', 'data/fimo_12/fimo.tsv', 'data/fimo_13/fimo.tsv', 'data/fimo_14/fimo.tsv',
+        'data/fimo_15/fimo.tsv', 'data/fimo_16/fimo.tsv', 'data/fimo_17/fimo.tsv', 'data/fimo_18/fimo.tsv', 'data/fimo_19/fimo.tsv',
+        'data/fimo_20/fimo.tsv', 'data/fimo_21/fimo.tsv', 'data/fimo_22/fimo.tsv', 'data/fimo_23/fimo.tsv', 'data/fimo_24/fimo.tsv',
+        'data/fimo_25/fimo.tsv', 'data/fimo_26/fimo.tsv', 'data/fimo_27/fimo.tsv', 'data/fimo_28/fimo.tsv', 'data/fimo_29/fimo.tsv',
+        'data/fimo_30/fimo.tsv', 'data/fimo_31/fimo.tsv', 'data/fimo_32/fimo.tsv', 'data/fimo_33/fimo.tsv', 'data/fimo_34/fimo.tsv',
+        'data/fimo_35/fimo.tsv', 'data/fimo_36/fimo.tsv', 'data/fimo_37/fimo.tsv', 'data/fimo_38/fimo.tsv', 'data/fimo_39/fimo.tsv',
+        'data/fimo_40/fimo.tsv', 'data/fimo_41/fimo.tsv'
 
 #------------------------------------------------------------------------------------
 module getData:

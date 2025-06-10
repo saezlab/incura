@@ -12,7 +12,7 @@ rule extractPromoters:
         """
         echo "Extracting promoters..."
         get_promoter create -g {input.annot} && mv gff.db data/
-        get_promoter extract -l 2000 -u 500 -f {input.genome} -g {output.db} -o {output.promoters}
+        get_promoter extract -l 1000 -u 200 -f {input.genome} -g {output.db} -o {output.promoters}
         """
 
 rule extractGenes:
@@ -70,7 +70,7 @@ rule annotPromoters:
 
 rule filterPromoters:
     input:
-        DEGS='data/{sample}',      #temporarily modifiy for full run. Original: 'data/DEGs_{sample}.txt'
+        DEGS='data/DEGs_{sample}.txt'
         prom_annot='data/promoters.annot.tsv'
     output:
         prom_filt=temp('data/promoters_{sample}.filt.tsv')
