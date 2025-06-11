@@ -1,7 +1,22 @@
+rule getProteinCodingGenes:
+    input: 
+        annot='data/annot.gtf'
+    output:
+        coding_genes='data/coding_genes.gtf'
+
+    singularity:
+        'workflow/envs/InCURA.sif'
+    threads: 32
+    shell:
+        """
+        echo "Extracting protein coding genes..."
+        awk '$3 == "gene" && $0 ~ /gene_biotype "protein_coding"/' {input.annot} > {output.coding_genes}
+        """
+
 rule extractPromoters:
     input:
         genome='data/genome.fa',
-        annot='data/annot.gtf'
+        annot='data/coding_genes.gtf'
     output:
         db=temp('data/gff.db'),
         promoters='data/promoters.csv'
