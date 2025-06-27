@@ -12,7 +12,7 @@ A basic version of InCURA is implemented as a user friendly web application: **L
 **Note:** 
 This version allows analysis of two different promoter lengths. I) A long promoter region: -2000, 500 bp around TSS and II) a shorter promoter region: -1000, 200 bp around TSS. Further it uses a fixed background model for motif scanning derived from the promoter regions of all coding genes. 
 
-If you would like to manipulate other parameters in the InCURA workflow please clone the GitHub repository. Please note that incura needs singularity to run, to reproduce the environment.
+If you would like to manipulate other parameters in the InCURA workflow please clone the GitHub repository. Please note that incura needs apptainer (formerly singularity) to run, to reproduce the environment. For installation please check the [documentation](https://apptainer.org/documentation/).
 
 ### Installation
 Clone repo:
