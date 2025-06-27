@@ -30,3 +30,25 @@ mamba activate snakemake
 ### Configuration
 Make sure to change the organism in the config file according to your needs. And if not mouse or human, add a valid download link for a reference genome. 
 
+Add your DEGs_myDataset.txt and all_genes.txt to the data directory and modify the Snakefile according to your dataset: 
+
+```
+rule all:
+    input: 
+        'data/fimo_myDataset/fimo.tsv'
+```
+
+### Run 
+Run the workflow with snakemake. Change the cores according to your computational resources: 
+
+```
+snakemake -s workflow/Snakefile --cores 8 --use-singularity
+```
+
+
+### Citation
+
+
+
+
+
