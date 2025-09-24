@@ -23,8 +23,8 @@ rule extractPromoters:
     singularity:
         'workflow/envs/InCURA.sif'
     params:
-        up_dist=1000,
-        down_dist=200
+        up_dist=5000,
+        down_dist=1000
     threads: 32
     shell:
         """
