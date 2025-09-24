@@ -22,12 +22,15 @@ rule extractPromoters:
         promoters='data/promoters.csv'
     singularity:
         'workflow/envs/InCURA.sif'
+    params:
+        up_dist=2000,
+        down_dist=500
     threads: 32
     shell:
         """
         echo "Extracting promoters..."
         get_promoter create -g {input.annot} && mv gff.db data/
-        get_promoter extract -l 2000 -u 500 -f {input.genome} -g {output.db} -o {output.promoters}
+        get_promoter extract -l {params.up_dist} -u {params.down_dist} -f {input.genome} -g {output.db} -o {output.promoters}
         """
 
 rule extractGenes:
