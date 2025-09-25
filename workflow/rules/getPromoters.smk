@@ -24,7 +24,7 @@ rule extractPromoters:
         'workflow/envs/InCURA.sif'
     params:
         up_dist=1000,
-        down_dist=2000
+        down_dist=200
     threads: 32
     shell:
         """
