@@ -23,5 +23,5 @@ rule runFIMO:
     threads: 32
     shell:
         """
-        fimo --oc data/fimo_{wildcards.sample} --verbosity 2 --thresh 4e-5 --bgfile {input.background} {input.motifs} {input.promoters}
+        fimo --oc data/fimo_{wildcards.sample} --verbosity 2 --thresh 2e-5 --bgfile {input.background} {input.motifs} {input.promoters}
         """
